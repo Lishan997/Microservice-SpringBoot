@@ -22,6 +22,14 @@ public class ItemService {
 
     public List<ItemDto> getAllItems(){
         List<Item> itemList = itemRepo.findAll();
+        System.out.println("ItemList" + itemList);
         return modelMapper.map(itemList, new TypeToken<List<ItemDto>>(){}.getType());
     }
+
+    public ItemDto getItemById(int id) {
+        Item item = itemRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Item not found with ID: " + id));
+        return modelMapper.map(item, ItemDto.class);
+    }
+
 }
