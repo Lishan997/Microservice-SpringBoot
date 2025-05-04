@@ -22,7 +22,6 @@ public class ItemService {
 
     public List<ItemDto> getAllItems(){
         List<Item> itemList = itemRepo.findAll();
-        System.out.println("ItemList" + itemList);
         return modelMapper.map(itemList, new TypeToken<List<ItemDto>>(){}.getType());
     }
 
